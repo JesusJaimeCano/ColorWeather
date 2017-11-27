@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.jesus.colorweather.MainActivity"
-    android:background="#00D2FF">
+    android:background="#00D2FF"
+    tools:context="com.example.jesus.colorweather.MainActivity">
 
     <ImageView
         android:id="@+id/iconImageView"
@@ -19,12 +19,10 @@
 
     <TextView
         android:id="@+id/descriptionTextView"
+        style="@style/mainFront"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:fontFamily="sans-serif-light"
-        android:text="Partly Cloudy"
-        android:textColor="#FFFFFF"
+        android:text="@string/partly_cloudy"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="@+id/iconImageView"
         app:layout_constraintStart_toStartOf="@+id/iconImageView"
@@ -32,12 +30,11 @@
 
     <TextView
         android:id="@+id/currentTempTextView"
+        style="@style/mainFront"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:fontFamily="sans-serif-light"
         android:text="19"
-        android:textColor="#FFF"
         android:textSize="54sp"
         app:layout_constraintEnd_toEndOf="@+id/descriptionTextView"
         app:layout_constraintStart_toStartOf="@+id/descriptionTextView"
@@ -54,27 +51,88 @@
 
     <TextView
         android:id="@+id/highestTempTextView"
+        style="@style/mainFront"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="60dp"
         android:layout_marginTop="24dp"
-        android:fontFamily="sans-serif-light"
-        android:text="H:  19°"
-        android:textColor="#FFF"
-        android:textSize="24sp"
+        android:text="H: 19°"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/currentTempTextView" />
 
     <TextView
         android:id="@+id/lowestTempTextView"
+        style="@style/mainFront"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="60dp"
         android:layout_marginTop="24dp"
-        android:fontFamily="sans-serif-light"
         android:text="L: 12°"
-        android:textColor="#FFF"
-        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/currentTempTextView" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.33333334" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.649635" />
+
+    <TextView
+        android:id="@+id/textView8"
+        style="@style/mainFront"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/daily_button_text"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView9"
+        style="@style/mainFront"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/hourly_button_text"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintHorizontal_bias="0.54"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline" />
+
+    <TextView
+        android:id="@+id/textView10"
+        style="@style/mainFront"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/minutely_button_text"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline3" />
+
 </android.support.constraint.ConstraintLayout>
