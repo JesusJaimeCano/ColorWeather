@@ -86,7 +86,7 @@
         app:layout_constraintGuide_percent="0.649635" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/dailyWeatherTextView"
         style="@style/mainFront"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -103,7 +103,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/hourlyWeatherTextView"
         style="@style/mainFront"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -121,7 +121,7 @@
         app:layout_constraintStart_toStartOf="@+id/guideline" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/minutelyWeatherTextView"
         style="@style/mainFront"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
