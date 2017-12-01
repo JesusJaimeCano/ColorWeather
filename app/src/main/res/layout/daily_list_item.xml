@@ -7,9 +7,24 @@
     tools:background="@drawable/bg_gradient_blue">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/dailyListTitle"
         style="@style/mainFront"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textStyle="bold"
         tools:text="Today" />
+
+    <TextView
+        android:id="@+id/dailyListDescription"
+        style="@style/mainFront"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Party Cloudy in the morning" />
+
+    <TextView
+        android:id="@+id/dailyListProbability"
+        style="@style/mainFront"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Rain Probability 24%" />
 </LinearLayout>
