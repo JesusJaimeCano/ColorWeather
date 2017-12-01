@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.jesus.colorweather.DailyWeatherActivity"
-    android:background="#00D2FF">
+    android:background="@drawable/bg_gradient_blue">
 
     <TextView
         android:id="@+id/dailyWeatherTextView"
@@ -19,6 +19,7 @@
         android:textStyle="bold" />
 
     <ListView
+        android:id="@android:id/list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/dailyWeatherTextView"
