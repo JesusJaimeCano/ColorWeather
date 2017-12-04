@@ -1,6 +1,7 @@
 package com.example.jesus.colorweather.Adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,8 @@ import java.util.ArrayList;
  */
 
 public class DailyWeatherAdapter extends BaseAdapter {
+
+    public static final String TAG = DailyWeatherAdapter.class.getSimpleName();
 
     ArrayList<Day> days;
     Context context;
@@ -51,19 +54,54 @@ public class DailyWeatherAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
-
-        view = LayoutInflater.from(context).inflate(R.layout.daily_list_item,null);
-
-        TextView dayTitle = view.findViewById(R.id.dailyListTitle);
-        TextView dayDescription =  view.findViewById(R.id.dailyListDescription);
-        TextView rainProbability = view.findViewById(R.id.dailyListProbability);
-
+        ViewHolder viewHolder;
         Day day = days.get(position);
 
-        dayTitle.setText(day.getDayname());
-        dayDescription.setText(day.getWeatherDescription());
-        rainProbability.setText(day.getRainProbability());
+        if (view == null){
+            Log.d(TAG,"Creando vistas y buscando vistas");
+            view = LayoutInflater.from(context).inflate(R.layout.daily_list_item, viewGroup,false); /*Estamos inflando(convirtiendo)
+        un layout, osea un xmla codigo JAVA, y despues buscanmos las views, osea los elementos, como el titulo, la descriptcion
+         , la probabilidad de lluvia, eso se hace  abajo en las lineas*/
+
+            viewHolder = new ViewHolder();
+
+            viewHolder.dayTitle = view.findViewById(R.id.dailyListTitle);
+            viewHolder.dayDescription = view.findViewById(R.id.dailyListDescription);
+            viewHolder.dayRainProbability = view.findViewById(R.id.dailyListProbability);
+
+            view.setTag(viewHolder);
+
+        }else{
+            viewHolder = (ViewHolder) view.getTag();
+        }
+
+        /*
+        TextView dayTitle = view.findViewById(R.id.dailyListTitle);
+            TextView dayDescription =  view.findViewById(R.id.dailyListDescription);
+            TextView rainProbability = view.findViewById(R.id.dailyListProbability);
+
+            Cada vez que scrolleamos estamos mandando a llamar la vista por el id, como se ve en ejemplo de arriba, lo que
+            * desperdicia memoria y no son buenas practicas, esto se soluciona con el View Holder Patern, para evitar procesamiento innecesario*/
+
+
+
+            viewHolder.dayTitle.setText(day.getDayname());
+            viewHolder.dayDescription.setText(day.getWeatherDescription());
+            viewHolder.dayRainProbability.setText(day.getRainProbability());
+
+
+
+
 
         return view;//Como vamos a renderizar y a mapear los datos
     }
+
+    static class ViewHolder{
+
+        TextView dayTitle;
+        TextView dayDescription;
+        TextView dayRainProbability;
+
+    }
+
 }
