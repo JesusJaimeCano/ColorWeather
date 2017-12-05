@@ -6,8 +6,6 @@ package com.example.jesus.colorweather;
 
 public class Hour {
 
-<<<<<<< HEAD
-<<<<<<< HEAD
     private String Title;
     private String weatherDescription;
 
@@ -25,30 +23,6 @@ public class Hour {
 
     public void setWeatherDescription(String weatherDescription) {
         this.weatherDescription = weatherDescription;
-=======
-=======
->>>>>>> 9a1067e6b000c2a2a269d476a0a52866d787d2ca
-    private String hourTitle;
-    private String hourDescription;
-
-    public String getHourTitle() {
-        return hourTitle;
-    }
-
-    public void setHourTitle(String hourTitle) {
-        this.hourTitle = hourTitle;
-    }
-
-    public String getHourDescription() {
-        return hourDescription;
-    }
-
-    public void setHourDescription(String hourDescription) {
-        this.hourDescription = hourDescription;
-<<<<<<< HEAD
->>>>>>> 9a1067e6b000c2a2a269d476a0a52866d787d2ca
-=======
->>>>>>> 9a1067e6b000c2a2a269d476a0a52866d787d2ca
     }
 
 
