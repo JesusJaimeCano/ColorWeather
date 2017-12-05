@@ -30,7 +30,10 @@ import butterknife.ButterKnife;
         hour.setWeatherDescription("There is a storm");
 
         ArrayList<Hour> hours = new ArrayList<Hour>();
-        hours.add(hour);
+        for (int i = 0; i<200; i++){
+            hours.add(hour);
+        }
+
 
         HourlyWeatherAdapter hourlyWeatherAdapter = new HourlyWeatherAdapter(this,hours);
 
