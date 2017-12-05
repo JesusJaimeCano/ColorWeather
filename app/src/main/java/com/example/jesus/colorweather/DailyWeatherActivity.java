@@ -11,6 +11,8 @@ import java.util.ArrayList;
 
 public class DailyWeatherActivity extends ListActivity {
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
