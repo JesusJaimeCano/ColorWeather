@@ -1,7 +1,6 @@
 package com.example.jesus.colorweather.Adapters;
 
 import android.content.Context;
-<<<<<<< HEAD
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,14 +9,6 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 import com.example.jesus.colorweather.Hour;
 import com.example.jesus.colorweather.R;
-=======
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-
-import com.example.jesus.colorweather.Day;
->>>>>>> 9a1067e6b000c2a2a269d476a0a52866d787d2ca
 
 import java.util.ArrayList;
 
@@ -29,7 +20,6 @@ public class HourlyWeatherAdapter extends BaseAdapter{
 
     public static final String TAG = HourlyWeatherAdapter.class.getSimpleName();
 
-<<<<<<< HEAD
     ArrayList<Hour> hours;
     Context context;
 
@@ -44,24 +34,11 @@ public class HourlyWeatherAdapter extends BaseAdapter{
     @Override
     public int getCount() {
         return hours.size();
-=======
-    ArrayList<Day> days;
-    Context context;
-
-
-    @Override
-    public int getCount() {
-        return days.size();
->>>>>>> 9a1067e6b000c2a2a269d476a0a52866d787d2ca
     }
 
     @Override
     public Object getItem(int position) {
-<<<<<<< HEAD
         return hours.get(position);
-=======
-        return days.get(position);
->>>>>>> 9a1067e6b000c2a2a269d476a0a52866d787d2ca
     }
 
     @Override
@@ -70,7 +47,6 @@ public class HourlyWeatherAdapter extends BaseAdapter{
     }
 
     @Override
-<<<<<<< HEAD
     public View getView(int position, View view, ViewGroup viewGroup) {
 
         ViewHolder viewHolder;
@@ -104,12 +80,5 @@ public class HourlyWeatherAdapter extends BaseAdapter{
 
         TextView Title;
         TextView weatherDescription;
-=======
-    public View getView(int i, View view, ViewGroup viewGroup) {
-
-        
-
-        return null;
->>>>>>> 9a1067e6b000c2a2a269d476a0a52866d787d2ca
     }
 }
