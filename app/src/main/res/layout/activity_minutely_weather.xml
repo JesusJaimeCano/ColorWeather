@@ -22,6 +22,8 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/minutelyWeatherTextView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="6dp" />
+        android:layout_marginTop="6dp"
+        android:id="@+id/minutelyRecyclerView"/>
+
 
 </RelativeLayout>
