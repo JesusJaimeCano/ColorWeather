@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ListActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import com.example.jesus.colorweather.Adapters.DailyWeatherAdapter;
 
@@ -18,17 +19,10 @@ public class DailyWeatherActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily_weather);
 
-        ArrayList<Day> days = new ArrayList<Day>();
+        ArrayList<Day> days;
 
-        Day day = new Day();
 
-        day.setDayname("Mondey");
-        day.setWeatherDescription("Si funciona perro");
-        day.setRainProbability("Rain Probality: 30%");
-
-        for (int i = 0; i < 500; i++){
-            days.add(day);
-        }
+        days = getIntent().getParcelableArrayListExtra("days");
 
         DailyWeatherAdapter dailyWeatherAdapter = new DailyWeatherAdapter(this,days);
 

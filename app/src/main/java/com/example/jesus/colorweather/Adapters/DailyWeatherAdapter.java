@@ -84,8 +84,9 @@ public class DailyWeatherAdapter extends BaseAdapter {
             * desperdicia memoria y no son buenas practicas, esto se soluciona con el View Holder Patern, para evitar procesamiento innecesario*/
 
 
+            String dayname = day.getDayname();
 
-            viewHolder.dayTitle.setText(day.getDayname());
+            viewHolder.dayTitle.setText(dayname);
             viewHolder.dayDescription.setText(day.getWeatherDescription());
             viewHolder.dayRainProbability.setText(day.getRainProbability());
 
