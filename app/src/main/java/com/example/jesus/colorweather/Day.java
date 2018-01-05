@@ -13,7 +13,6 @@ public class Day {
     public String getDayname() {
         return dayname;
     }
-
     public void setDayname(String dayname) {
         this.dayname = dayname;
     }

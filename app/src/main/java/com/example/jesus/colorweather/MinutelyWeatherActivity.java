@@ -3,8 +3,11 @@ package com.example.jesus.colorweather;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import com.example.jesus.colorweather.Adapters.MinutelyWeatherAdapter;
 
@@ -32,20 +35,15 @@ public class MinutelyWeatherActivity extends Activity {
         minute.setTitle("19.55");
         minute.setRainProbability("99%");
 
-        minutes.add(minute);
-
-        Minute minute2 = new Minute();
-
-        minute2.setTitle("19.55");
-        minute2.setRainProbability("99%");
-
-        minutes.add(minute2);
+        for (int i = 0; i < 300; i++){
+            minutes.add(minute);
+        }
 
         MinutelyWeatherAdapter minutelyWeatherAdapter = new MinutelyWeatherAdapter(this, minutes );
 
         minutelyRecyclerView.setAdapter(minutelyWeatherAdapter);
 
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        RecyclerView.LayoutManager layoutManager = new StaggeredGridLayoutManager(5, StaggeredGridLayoutManager.VERTICAL);
 
         minutelyRecyclerView.setLayoutManager(layoutManager);
         minutelyRecyclerView.setHasFixedSize(true);
