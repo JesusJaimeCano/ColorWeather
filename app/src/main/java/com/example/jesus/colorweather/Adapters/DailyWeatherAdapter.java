@@ -35,6 +35,10 @@ public class DailyWeatherAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
+
+        if (days == null){
+            return 0;
+        }
         return days.size();//Este es el que le va a decir al adapter cuantos elementos hay en los datos, 7 dias d ela semana, 24 horas etc
 
 
@@ -86,9 +90,9 @@ public class DailyWeatherAdapter extends BaseAdapter {
 
             String dayname = day.getDayname();
 
-            viewHolder.dayTitle.setText(dayname);
+            viewHolder.dayTitle.setText(dayname.toUpperCase());
             viewHolder.dayDescription.setText(day.getWeatherDescription());
-            viewHolder.dayRainProbability.setText(day.getRainProbability());
+            viewHolder.dayRainProbability.setText("Rain Probability: " + day.getRainProbability() + "%");
 
 
 

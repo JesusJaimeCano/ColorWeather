@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ListActivity;
 import android.os.Bundle;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.jesus.colorweather.Adapters.HourlyWeatherAdapter;
 
@@ -17,6 +18,9 @@ import butterknife.ButterKnife;
         @BindView(R.id.hourlyTitleTextView)
         ListView hourlyListView;
 
+        @BindView(R.id.hourlyNoDataTextView)
+        TextView hourlyNoData;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,20 +28,13 @@ import butterknife.ButterKnife;
 
         ButterKnife.bind(this);
 
-
-        Hour hour = new Hour();
-        hour.setTitle("11:00pm");
-        hour.setWeatherDescription("There is a storm");
-
-        ArrayList<Hour> hours = new ArrayList<Hour>();
-        for (int i = 0; i<200; i++){
-            hours.add(hour);
-        }
-
+        ArrayList<Hour> hours = getIntent().getParcelableArrayListExtra("hours");
 
         HourlyWeatherAdapter hourlyWeatherAdapter = new HourlyWeatherAdapter(this,hours);
 
         hourlyListView.setAdapter(hourlyWeatherAdapter);
+
+        hourlyListView.setEmptyView(hourlyNoData);
 
     }
 }

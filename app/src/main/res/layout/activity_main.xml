@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:src="@drawable/clear_day"
+        android:src="@drawable/na"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,7 +22,7 @@
         style="@style/mainFront"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/partly_cloudy"
+        android:text="--"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="@+id/iconImageView"
         app:layout_constraintStart_toStartOf="@+id/iconImageView"
@@ -34,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="19"
+        android:text="--"
         android:textSize="54sp"
         app:layout_constraintEnd_toEndOf="@+id/descriptionTextView"
         app:layout_constraintStart_toStartOf="@+id/descriptionTextView"
@@ -54,9 +54,9 @@
         style="@style/mainFront"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="60dp"
+        android:layout_marginStart="60dp"
         android:layout_marginTop="24dp"
-        android:text="H: 19°"
+        android:text="H: --°"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/currentTempTextView" />
 
@@ -65,9 +65,9 @@
         style="@style/mainFront"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="60dp"
+        android:layout_marginEnd="60dp"
         android:layout_marginTop="24dp"
-        android:text="L: 12°"
+        android:text="L: --°"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/currentTempTextView" />
 

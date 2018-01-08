@@ -1,12 +1,19 @@
 package com.example.jesus.colorweather;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -19,9 +26,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 import java.util.TimeZone;
 
 import butterknife.BindDrawable;
@@ -60,6 +70,11 @@ public class MainActivity extends Activity {
 
     private static final String TAG = "MyActivity";
     ArrayList<Day> days;
+    ArrayList<Hour> hours;
+    ArrayList<Minute> minutes;
+
+    String latitudFromGPS = "19.409757011748276";
+    String longitudFromGPS = "-99.16954457759857";
 
 
     @Override
@@ -86,8 +101,29 @@ public class MainActivity extends Activity {
 
 
         // Instantiate the RequestQueue.
+
+
+        requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, 10);
+
+        LocationManager mLocManger = (LocationManager) getSystemService(LOCATION_SERVICE);
+        Localizacion localizacion = new Localizacion();
+
+        mLocManger.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0 , 0, localizacion);
+
+
+
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "https://api.darksky.net/forecast/ceb0ced205a989736a845dcdb873d4d1/37.8267,-122.4233?units=si";
+
+        String forecastURL = "https://api.darksky.net/forecast";
+        String apiKey = "ceb0ced205a989736a845dcdb873d4d1";
+        String latitud = "37.8267";
+        String longitud = "-122.4233";
+        String units = "units=si";
+
+        String url = forecastURL + "/" + apiKey+ "/" +  latitudFromGPS + "," + longitudFromGPS + "?" + units + "";
+        Log.d("Valor de URL", longitudFromGPS + "-....-" + latitudFromGPS);
+
+        //String url = "https://api.darksky.net/forecast/ceb0ced205a989736a845dcdb873d4d1/37.8267,-122.4233?units=si";
 
         // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
@@ -97,41 +133,10 @@ public class MainActivity extends Activity {
 
                         try {
                             CurrentWeather currentWeather = getCurrentWeatherFromJson(response);
-///////////////////// DailyWeather/*
                             days = getDailyWeatherFromJson(response);
+                            hours = getHourlyWeatherFromJson(response);
+                            minutes = getMinutelyWeatherFromJson(response);
 
-                            for (Day day : days) {
-
-                                /*Log.d("DayName" , day.getDayname());
-                                Log.d("Summary" , day.getWeatherDescription());
-                                Log.d("RainProbability" , day.getRainProbability());*/
-
-                            }
-////////////////////
-
-////////////////////Hourly Weather
-
-                            ArrayList<Hour> hours = getHourlyWeatherFromJson(response);
-
-                            /*for (Hour hour : hours) {
-
-                                Log.d("HourTitle" , hour.getTitle());
-                                Log.d("HourlyDescription" , hour.getWeatherDescription());
-
-                            }*/
-
-
-//////////////////////
-
-////////////////////Minutely Weather
-
-                            ArrayList<Minute> minutes = getMinutelyWeatherFromJson(response);
-
-                            for (Minute minute : minutes) {
-                                Log.d("Minute" , minute.getTitle());
-                                Log.d("Rain Probability" , minute.getRainProbability());
-                            }
-//////////////////////
                             iconImageView.setImageDrawable(currentWeather.getIconDrawableResource());
                             descriptionTextView.setText(currentWeather.getDescription());
                             currentTempTextView.setText(currentWeather.getCurrentTemperature());
@@ -147,7 +152,8 @@ public class MainActivity extends Activity {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                Log.d(TAG, "That didn't work!");
+                Toast.makeText(MainActivity.this, "Conection Error", Toast.LENGTH_SHORT).show();
+                
             }
         });
         // Add the request to the RequestQueue.
@@ -155,6 +161,10 @@ public class MainActivity extends Activity {
 
 
     }
+
+
+
+
 
     @OnClick(R.id.dailyWeatherTextView)
     public void dailyWeatherClick() {
@@ -167,14 +177,14 @@ public class MainActivity extends Activity {
     @OnClick(R.id.hourlyWeatherTextView)
     public void hourlyWeatherClick() {
         Intent hourlyActivityIntent = new Intent(MainActivity.this, HourlyWeatherActivity.class);
-
+        hourlyActivityIntent.putParcelableArrayListExtra("hours", hours);
         startActivity(hourlyActivityIntent);
     }
 
     @OnClick(R.id.minutelyWeatherTextView)
     public void minutelyWeatherClick() {
         Intent minutelyActivityIntent = new Intent(MainActivity.this, MinutelyWeatherActivity.class);
-
+        minutelyActivityIntent.putParcelableArrayListExtra("minutes", minutes);
         startActivity(minutelyActivityIntent);
     }
 
@@ -310,6 +320,31 @@ public class MainActivity extends Activity {
         }
 
         return minutes;
+    }
+
+
+    public class Localizacion implements LocationListener{
+
+        @Override
+        public void onLocationChanged(Location location) {
+            latitudFromGPS = location.getLatitude()+"";
+            longitudFromGPS = location.getLongitude()+"";
+        }
+
+        @Override
+        public void onStatusChanged(String provider, int status, Bundle extras) {
+
+        }
+
+        @Override
+        public void onProviderEnabled(String provider) {
+
+        }
+
+        @Override
+        public void onProviderDisabled(String provider) {
+
+        }
     }
 
 }

@@ -8,6 +8,8 @@ import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.view.View;
+import android.widget.TextView;
 
 import com.example.jesus.colorweather.Adapters.MinutelyWeatherAdapter;
 
@@ -20,6 +22,8 @@ public class MinutelyWeatherActivity extends Activity {
 
     @BindView(R.id.minutelyRecyclerView)
     RecyclerView minutelyRecyclerView;
+    @BindView(R.id.minutelyNoDataTextView)
+    TextView minutelyNoDataTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,25 +32,32 @@ public class MinutelyWeatherActivity extends Activity {
 
         ButterKnife.bind(this);
 
-        ArrayList<Minute> minutes = new ArrayList<>();
+        ArrayList<Minute> minutes;
 
-        Minute minute = new Minute();
+        minutes = getIntent().getParcelableArrayListExtra("minutes");
 
-        minute.setTitle("19.55");
-        minute.setRainProbability("99%");
 
-        for (int i = 0; i < 300; i++){
-            minutes.add(minute);
+        if (minutes != null && !minutes.isEmpty()){
+
+            MinutelyWeatherAdapter minutelyWeatherAdapter = new MinutelyWeatherAdapter(this, minutes );
+
+            minutelyRecyclerView.setAdapter(minutelyWeatherAdapter);
+
+            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+
+            minutelyRecyclerView.setLayoutManager(layoutManager);
+            minutelyRecyclerView.setHasFixedSize(true);
+            minutelyNoDataTextView.setVisibility(View.GONE);
+
+        }else{
+
+            minutelyRecyclerView.setVisibility(View.GONE);
+            minutelyNoDataTextView.setVisibility(View.VISIBLE);
+
         }
 
-        MinutelyWeatherAdapter minutelyWeatherAdapter = new MinutelyWeatherAdapter(this, minutes );
 
-        minutelyRecyclerView.setAdapter(minutelyWeatherAdapter);
 
-        RecyclerView.LayoutManager layoutManager = new StaggeredGridLayoutManager(5, StaggeredGridLayoutManager.VERTICAL);
-
-        minutelyRecyclerView.setLayoutManager(layoutManager);
-        minutelyRecyclerView.setHasFixedSize(true);
 
 
     }

@@ -16,7 +16,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:text="@string/hourly_forecast"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        />
 
     <ListView
         android:layout_width="match_parent"
@@ -24,5 +25,15 @@
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:id="@+id/hourlyTitleTextView"/>
+        android:id="@+id/hourlyTitleTextView"
+        android:divider="@null"/>
+
+    <TextView
+        style="@style/mainFront"
+        android:text="@string/no_data_to_display"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/hourlyNoDataTextView"
+        android:layout_centerInParent="true"/>
+
 </RelativeLayout>

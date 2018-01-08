@@ -7,4 +7,5 @@
     <string name="minutely_button_text">Minutely</string>
     <string name="partly_cloudy">Partly Cloudy</string>
     <string name="minutely_forecast">Minutely Forecast</string>
+    <string name="no_data_to_display">No data to display</string>
 </resources>

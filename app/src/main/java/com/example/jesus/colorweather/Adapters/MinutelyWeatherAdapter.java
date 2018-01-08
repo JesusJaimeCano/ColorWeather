@@ -44,6 +44,10 @@ public class MinutelyWeatherAdapter extends RecyclerView.Adapter{
 
     @Override
     public int getItemCount() {
+
+        if (minutes == null){
+            return 0;
+        }
         return minutes.size();
     }
 
@@ -65,7 +69,7 @@ public class MinutelyWeatherAdapter extends RecyclerView.Adapter{
             Minute minute = minutes.get(position);
 
             titleTextView.setText(minute.getTitle());
-            rainProbabilityTextView.setText(minute.getRainProbability()) ;
+            rainProbabilityTextView.setText("Rain Probability: " + minute.getRainProbability() + "%") ;
         }
     }
 }
